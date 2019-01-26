@@ -1,0 +1,45 @@
+USE master
+
+GO
+
+Alter Database LearnTrigger
+
+SET SINGLE_USER
+
+WITH ROLLBACK IMMEDIATE
+
+GO
+
+DROP DATABASE LearnTrigger
+
+GO
+
+CREATE DATABASE LearnTrigger
+
+GO
+
+USE LearnTrigger
+
+GO
+
+SET NOCOUNT ON
+
+CREATE TABLE Source(Sou_ID int IDENTITY, Sou_Desc varchar(10))
+
+GO
+
+CREATE TRIGGER tr_Source_Insert
+
+ON Source
+
+FOR INSERT
+
+AS
+
+PRINT GETDATE()
+
+GO
+
+INSERT INTO Source
+
+VALUES('test 1');
